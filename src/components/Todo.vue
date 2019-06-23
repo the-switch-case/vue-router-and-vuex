@@ -1,11 +1,11 @@
 <template>
-  <div class="tile flex-centered" :class="{checked: todo.checked}">
+  <div class="tile" :class="{checked: todo.checked}">
     <div class="tile-icon">
       <i class="icon" :class="todo.checked ? 'icon-check' : 'icon-time'"></i>
     </div>
-    <dir class="tile-content">
-      <div class="tile-subtitle">{{ todo.description }}</div>
-    </dir>
+    <div class="tile-content">
+      <p class="tile-subtitle">{{ todo.description }}</p>
+    </div>
     <div class="tile-action">
       <button @click="$emit('toggle', todo)" class="btn btn-link">
         <span v-if="todo.checked">Desmarcar</span>
