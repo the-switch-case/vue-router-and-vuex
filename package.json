@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "spectre.css": "^0.5.8",
     "vue": "^2.6.10"
   },
   "devDependencies": {
