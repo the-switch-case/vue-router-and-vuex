@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "spectre.css": "^0.5.8",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
