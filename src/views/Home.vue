@@ -3,7 +3,7 @@
     <form @submit.prevent="addTodo(todo)">
       <div class="input-group">
         <input type="text" v-model="todo.description" class="form-input" placeholder="Novo todo" />
-        <button class="btn btn-primary input-group-btn">Adicionar</button>
+        <button class="btn btn-primary input-group-btn" :class="{loading}">Adicionar</button>
       </div>
     </form>
     <div class="todo-list">
@@ -19,13 +19,22 @@ export default {
   name: "app",
   components: { Todo },
   data() {
-    return { todos: [], todo: { checked: false } };
+    return { todo: { checked: false }, loading: false };
+  },
+  computed: {
+    todos() {
+      return this.$store.state.todos;
+    }
   },
   methods: {
-    addTodo(todo) {
-      todo.id = Date.now();
-      this.todos.push(todo);
-      this.todo = { checked: false };
+    async addTodo(todo) {
+      try {
+        this.loading = true;
+        await this.$store.dispatch("addTodo", todo);
+        this.todo = { checked: false };
+      } finally {
+        this.loading = false;
+      }
     },
 
     toggleTodo(todo) {
