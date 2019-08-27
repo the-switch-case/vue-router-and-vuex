@@ -16,7 +16,11 @@
             />
           </div>
           <div class="panel-footer">
-            <!-- buttons or inputs -->
+            <button
+              @click="checkAll"
+              v-if="uncheckeds.length > 0"
+              class="btn btn-link float-right"
+            >Concluir tudo</button>
           </div>
         </div>
       </div>
@@ -35,7 +39,16 @@
             />
           </div>
           <div class="panel-footer">
-            <!-- buttons or inputs -->
+            <button
+              @click="uncheckAll"
+              v-if="checkeds.length > 0"
+              class="btn btn-link float-right"
+            >Desmarcar tudo</button>
+            <button
+              @click="removeAllCheckeds"
+              v-if="checkeds.length > 0"
+              class="btn btn-link float-right text-error"
+            >Remover tudo</button>
           </div>
         </div>
       </div>
@@ -53,7 +66,13 @@ export default {
     ...mapGetters(["uncheckeds", "checkeds"])
   },
   methods: {
-    ...mapActions(["removeTodo", "toggleTodo"])
+    ...mapActions([
+      "removeTodo",
+      "toggleTodo",
+      "checkAll",
+      "uncheckAll",
+      "removeAllCheckeds"
+    ])
   }
 };
 </script>
